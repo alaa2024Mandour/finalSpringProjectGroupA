@@ -37,6 +37,9 @@ public class UserService implements UserServiceInt {
 
     public UserRepoInt userRepoInt;
 
+    UserService(UserRepoInt userRepoInt){
+        this.userRepoInt = userRepoInt;
+    }
 
     @Override
     public UserDTO findUserById(Long id) {
