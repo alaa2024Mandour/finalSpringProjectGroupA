@@ -3,7 +3,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Setter
 @Getter
 @AllArgsConstructor
@@ -16,7 +15,6 @@ public class UserDTO {
     private Long sid;
     private String password;
     private String rePassword;
-
 }
 
 
