@@ -26,7 +26,6 @@ public class UserEntity {
     @Column(name = "sid")
     private Long sid;
 
-
     @Column(name = "phoneNo")
     private String phoneNo;
 
@@ -35,9 +34,6 @@ public class UserEntity {
 
     @Column(name = "rePassword")
     private String rePassword;
-
-
-
 }
 
 

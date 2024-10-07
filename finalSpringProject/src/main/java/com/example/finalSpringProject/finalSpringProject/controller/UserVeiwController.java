@@ -6,18 +6,18 @@ import com.example.finalSpringProject.finalSpringProject.service.UserServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-@RestController
+@Controller
 @RequestMapping("/User")
-public class UserController {
+public class UserVeiwController {
     private final UserServiceInt userServiceInt;
 
     @Autowired
-    UserController(UserServiceInt userServiceInt) {
+    UserVeiwController(UserServiceInt userServiceInt) {
         this.userServiceInt = userServiceInt;
     }
 
@@ -27,12 +27,25 @@ public class UserController {
         CustomResponse<UserDTO> customResponse =new CustomResponse<>("01","Success",userDTO);
         return new ResponseEntity<>(customResponse, HttpStatus.OK);
     }
+    @GetMapping("/getUserByName")
+    public ResponseEntity<?> findByUserName(@RequestParam String name){
+        UserDTO userDTO = userServiceInt.findByUserName(name);
+        CustomResponse<UserDTO> customResponse =new CustomResponse<>("01","Success",userDTO);
+        return new ResponseEntity<>(customResponse, HttpStatus.OK);
+    }
 
     @GetMapping
     public ResponseEntity<?> findAllUser (){
         List<UserDTO> UserDTO = userServiceInt.findAllUsers();
         CustomResponse<List<UserDTO>> customResponse = new CustomResponse<>("01","Success",UserDTO);
         return  new  ResponseEntity<>(customResponse, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public String saveUser(@RequestBody UserDTO _userDTO) {
+        UserDTO userDTO = userServiceInt.saveUser(_userDTO);
+        CustomResponse<UserDTO> customResponse = new CustomResponse<>("01","Success",userDTO);
+        return "";
     }
 
     @PostMapping
