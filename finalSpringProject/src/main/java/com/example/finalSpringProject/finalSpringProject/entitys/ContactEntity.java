@@ -11,8 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name ="users")
-public class UserEntity {
+@Table(name ="contactUs")
+public class ContactEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -23,15 +23,10 @@ public class UserEntity {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "industy")
-    private String industry;
+    @Column(name = "subject")
+    private String subject;
 
-    @Column(name = "phoneNo")
-    private String phoneNo;
-
-    @Column(name = "password")
-    private String password;
+    @Column(name = "message")
+    private String message;
 
 }
-
-

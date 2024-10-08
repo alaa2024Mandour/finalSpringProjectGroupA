@@ -7,13 +7,10 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
+public class ContactDTO {
     private Long Id;
     private String username;
     private String email;
-    private String phoneNo;
-    private String industry;
-    private String password;
+    private String subject;
+    private String message;
 }
-
-
