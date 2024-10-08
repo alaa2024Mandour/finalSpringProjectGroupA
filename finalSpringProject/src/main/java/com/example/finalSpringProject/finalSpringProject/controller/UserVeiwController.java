@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/User")
+@RequestMapping("/User/view")
 public class UserVeiwController {
     private final UserServiceInt userServiceInt;
 
@@ -43,21 +43,52 @@ public class UserVeiwController {
         return "index";
     }
 
-    @GetMapping
-    public String saveUser( Model model) {
+
+    @GetMapping("/login")
+    public String login( Model model) {
+        model.addAttribute("userList",new UserDTO());
+        return "login";
+    }
+    @GetMapping("/about")
+    public String about( Model model) {
+        model.addAttribute("userList",new UserDTO());
+        return "about";
+    }
+    @GetMapping("/contact")
+    public String contact( Model model) {
+        model.addAttribute("userList",new UserDTO());
+        return "contact";
+    }
+    @GetMapping("/service")
+    public String service( Model model) {
+        model.addAttribute("userList",new UserDTO());
+        return "service";
+    }
+    @GetMapping("/chatbot")
+    public String chatbot( Model model) {
+        model.addAttribute("userList",new UserDTO());
+        return "chatbot";
+    }
+    @GetMapping("/index")
+    public String index( Model model) {
         model.addAttribute("userList",new UserDTO());
         return "index";
     }
 
+    @GetMapping("/signUp")
+    public String saveUser(Model model) {
+        model.addAttribute("userList",new UserDTO());
+        return "signUp";
+    }
     @PostMapping
-    public String saveUser(UserDTO _userDTO, Model model) {
+    public String saveUser( UserDTO _userDTO, Model model) {
         UserDTO userDTO = userServiceInt.saveUser(_userDTO);
         model.addAttribute("userList",new UserDTO());
-        return "index";
+        return "signUp";
     }
 
     @PutMapping
-    public CustomResponse<UserDTO> updateUser(@RequestBody UserDTO _userDTO) {
+    public CustomResponse<UserDTO> updateUser(UserDTO _userDTO) {
         if(_userDTO != null){
             System.out.println("User updated DONE");
         }
@@ -66,14 +97,14 @@ public class UserVeiwController {
     }
 
     @PatchMapping
-    public ResponseEntity<?> patchUser(@RequestBody UserDTO _userDTO , @RequestParam Long userId) {
+    public ResponseEntity<?> patchUser( UserDTO _userDTO , Long userId) {
         UserDTO userDTO = userServiceInt.patchUpdateUser(_userDTO, userId);
         CustomResponse<UserDTO> customResponse = new CustomResponse<>("01","Success",userDTO);
         return new ResponseEntity<>(customResponse, HttpStatus.ALREADY_REPORTED);
     }
 
     @DeleteMapping
-    public void deleteUserById(@RequestParam Long id) {
+    public void deleteUserById( Long id) {
         userServiceInt.deleteUser(id);
     }
 

@@ -23,8 +23,8 @@ public class UserEntity {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "sid")
-    private Long sid;
+    @Column(name = "industy")
+    private String industry;
 
     @Column(name = "phoneNo")
     private String phoneNo;
@@ -32,8 +32,6 @@ public class UserEntity {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "rePassword")
-    private String rePassword;
 }
 
 

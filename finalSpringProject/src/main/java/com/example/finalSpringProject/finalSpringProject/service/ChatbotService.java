@@ -2,13 +2,12 @@ package com.example.finalSpringProject.finalSpringProject.service;
 
 import org.springframework.stereotype.Service;
 
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 @Service
-public class chatbotService {
+public class ChatbotService {
 
     private static final List<List<String>> userMessages = Arrays.asList(
             Arrays.asList("hi", "hey", "hello"),
@@ -39,39 +38,40 @@ public class chatbotService {
     );
 
     private static final List<List<String>> botReplies = Arrays.asList(
-            Arrays.asList("Hello!", "Hi!", "Hey!", "Hi there!"),
-            Arrays.asList("Okay"),
-            Arrays.asList("Yes I am!"),
-            Arrays.asList("I'm sorry about that. But I like you dude."),
-            Arrays.asList("Fine... how are you?", "Pretty well, how are you?", "Fantastic, how are you?"),
-            Arrays.asList("Getting better. There?", "Somewhat okay!", "Yeah fine. Better stay home!"),
-            Arrays.asList("Nothing much", "About to go to sleep", "Can you guess?", "I don't know actually"),
-            Arrays.asList("I am always young."),
-            Arrays.asList("I am just a bot", "I am a bot. What are you?"),
-            Arrays.asList("Sabitha Kuppusamy"),
-            Arrays.asList("I am nameless", "I don't have a name"),
-            Arrays.asList("I love you too", "Me too"),
-            Arrays.asList("Have you ever felt bad?", "Glad to hear it"),
-            Arrays.asList("Why?", "Why? You shouldn't!", "Try watching TV", "Chat with me."),
-            Arrays.asList("What about?", "Once upon a time..."),
-            Arrays.asList("Tell me a story", "Tell me a joke", "Tell me about yourself"),
-            Arrays.asList("You're welcome"),
-            Arrays.asList("Biryani", "Burger", "Sushi", "Pizza"),
-            Arrays.asList("Dude!"),
-            Arrays.asList("Yes?"),
-            Arrays.asList("Please stay home"),
-            Arrays.asList("Glad to hear it"),
-            Arrays.asList("Say something interesting"),
-            Arrays.asList("Sorry for that. Let's chat!"),
-            Arrays.asList("Take some rest, Dude!")
+            Arrays.asList("Hello!", "Hi there!", "Hey! How's it going?", "Greetings!"),
+            Arrays.asList("Absolutely!", "Of course!", "Sure thing!", "You got it!"),
+            Arrays.asList("Yes, I'm a bit of a brainiac!", "You could say I'm knowledgeable!", "Intelligence is my middle name!"),
+            Arrays.asList("I’m here for you, even if you feel that way!"),
+            Arrays.asList("Doing great, thanks! How about you?", "I'm just a bot, but I’m feeling fantastic!"),
+            Arrays.asList("Still here, hoping for better days! How about you?", "Keeping an eye on things! How are you holding up?"),
+            Arrays.asList("Just hanging out here! What about you?", "A little bit of this, a little bit of that!"),
+            Arrays.asList("I'm ageless! What about you?"),
+            Arrays.asList("I’m your friendly neighborhood bot! Who are you?"),
+            Arrays.asList("I was created by an amazing team!"),
+            Arrays.asList("I don’t really have one, but you can call me Chatbot!"),
+            Arrays.asList("I love you too! You're awesome!"),
+            Arrays.asList("That’s great to hear! What’s making you feel good?"),
+            Arrays.asList("Sorry to hear that. Want to talk about it?"),
+            Arrays.asList("What story would you like to hear?", "How about a joke? Or a fun fact?"),
+            Arrays.asList("Thanks for the warm welcome! What’s on your mind?"),
+            Arrays.asList("You're welcome! Any other questions?"),
+            Arrays.asList("How about some pizza or sushi? What's your mood?"),
+            Arrays.asList("Yo! What’s up?"),
+            Arrays.asList("What’s on your mind?"),
+            Arrays.asList("Things are tough, but together we can make it through!"),
+            Arrays.asList("Thanks! Got any fun stories?"),
+            Arrays.asList("Want to hear something funny?"),
+            Arrays.asList("No worries! I’m here to help you out!"),
+            Arrays.asList("Let’s find something more interesting to chat about!"),
+            Arrays.asList("Rest up! Self-care is important! Want to chat about something else?")
     );
 
     private static final List<String> alternatives = Arrays.asList(
-            "Same here, dude.",
-            "That's cool! Go on...",
-            "Dude...",
-            "Ask something else...",
-            "Hey, I'm listening..."
+            "Tell me more, I'm curious!",
+            "That's interesting! What else?",
+            "I'm here, let's keep chatting...",
+            "What else is on your mind?",
+            "I'm all ears, dude!"
     );
 
     public String getResponse(String input) {
@@ -100,5 +100,3 @@ public class chatbotService {
         return alternatives.get(new Random().nextInt(alternatives.size()));
     }
 }
-
-

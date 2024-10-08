@@ -12,9 +12,8 @@ public class UserDTO {
     private String username;
     private String email;
     private String phoneNo;
-    private Long sid;
+    private String industry;
     private String password;
-    private String rePassword;
 }
 
 
