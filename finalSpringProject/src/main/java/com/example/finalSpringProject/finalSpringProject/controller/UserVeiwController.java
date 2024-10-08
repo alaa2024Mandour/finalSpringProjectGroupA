@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,23 +36,24 @@ public class UserVeiwController {
     }
 
     @GetMapping
-    public ResponseEntity<?> findAllUser (){
+    public String findAllUser (Model model){
         List<UserDTO> UserDTO = userServiceInt.findAllUsers();
         CustomResponse<List<UserDTO>> customResponse = new CustomResponse<>("01","Success",UserDTO);
-        return  new  ResponseEntity<>(customResponse, HttpStatus.OK);
+        model.addAttribute("userList",customResponse);
+        return "index";
+    }
+
+    @GetMapping
+    public String saveUser( Model model) {
+        model.addAttribute("userList",new UserDTO());
+        return "index";
     }
 
     @PostMapping
-    public String saveUser(@RequestBody UserDTO _userDTO) {
+    public String saveUser(UserDTO _userDTO, Model model) {
         UserDTO userDTO = userServiceInt.saveUser(_userDTO);
-        CustomResponse<UserDTO> customResponse = new CustomResponse<>("01","Success",userDTO);
-        return "";
-    }
-
-    @PostMapping
-    public CustomResponse<UserDTO> saveUser(@RequestBody UserDTO _userDTO) {
-        UserDTO userDTO = userServiceInt.saveUser(_userDTO);
-        return new CustomResponse<>("01","Success",userDTO);
+        model.addAttribute("userList",new UserDTO());
+        return "index";
     }
 
     @PutMapping
