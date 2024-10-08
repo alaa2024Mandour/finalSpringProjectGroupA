@@ -1,6 +1,7 @@
 package com.example.finalSpringProject.finalSpringProject.service;
 
 
+import com.example.finalSpringProject.finalSpringProject.models.ContactDTO;
 import com.example.finalSpringProject.finalSpringProject.models.UserDTO;
 
 import java.util.List;
@@ -19,6 +20,8 @@ public interface UserServiceInt {
     public List<UserDTO> findAllUsers();
 
     public UserDTO findByUserName(String userName);
+
+    public ContactDTO savemessage(ContactDTO contactDto);
 
 //    UserDTO assignProjectToUser(UserDTO userDTO, Long projectId);
 }

@@ -1,7 +1,10 @@
 package com.example.finalSpringProject.finalSpringProject.service;
+import com.example.finalSpringProject.finalSpringProject.entitys.ContactEntity;
 import com.example.finalSpringProject.finalSpringProject.entitys.UserEntity;
 import com.example.finalSpringProject.finalSpringProject.exceptions.CustomException;
+import com.example.finalSpringProject.finalSpringProject.models.ContactDTO;
 import com.example.finalSpringProject.finalSpringProject.models.UserDTO;
+import com.example.finalSpringProject.finalSpringProject.repo.ContactRepoInt;
 import com.example.finalSpringProject.finalSpringProject.repo.UserRepoInt;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -37,12 +40,20 @@ public class UserService implements UserServiceInt {
 //    }
 
     public UserRepoInt userRepoInt;
+    public final ContactRepoInt contactRepoInt;
     public final ModelMapper modelMapper= new ModelMapper();
 
-    UserService(UserRepoInt userRepoInt){
+    UserService(UserRepoInt userRepoInt, ContactRepoInt contactRepoInt){
         this.userRepoInt = userRepoInt;
+        this.contactRepoInt = contactRepoInt;
     }
+    @Override
+    public ContactDTO savemessage(ContactDTO contactDto) {
+        ContactEntity mapedUser = modelMapper.map(contactDto, ContactEntity.class);
+        ContactEntity savedUserEntity = contactRepoInt.save(mapedUser);
+        return modelMapper.map(savedUserEntity, ContactDTO.class);
 
+    }
     @Override
     public UserDTO findUserById(Long id) {
         UserEntity userEntity = userRepoInt.findById(id)
